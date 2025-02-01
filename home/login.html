@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOGIN-PAGE</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    form {
+      background: #fff;
+      padding: 60px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      height: 50vh;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 80px;
+    }
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 15px;
+      border: 1px solid #007bff;
+      border-radius: 14px;
+      margin-top: 5px;
+    }
+    button {
+      width: 110%;
+      padding: 15px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      font-size: 20px;
+      font-weight: bolder;
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: linear-gradient(to right, #ea00ff, #ffcc00);
+    }
+    button:active {
+      background: linear-gradient(to left, #ea00ff, #ffcc00);
+    }
+    form p {
+      font-size: 30px;
+      font-weight: bolder;
+    }
+    .login-link {
+      color: red;
+    }
+    .label {
+      font-size: 20px;
+    }
+    h1 {
+      font-size: 50px;
+      font-weight: bolder;
+    }
+    @media (max-width: 768px) {
+      form {
+        /* padding: 20px; */
+        margin: 15px;
+      }
+      input {
+        padding: 10px;
+      }
+      button {
+        padding: 10px;
+        font-size: 16px;
+      }
+      form p {
+        font-size: 20px;
+      }
+      .label {
+        font-size: 16px;
+      }
+      h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
+  <body>
+    <h1>Login</h1>
+    <form>
+      <p>Login to your account</p>
+      <div class="form-group">
+        <label for="name" class="label">Username:</label>
+        <input type="text" name="username" placeholder="Username" required />
+        <label for="password" class="label">Password:</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Login</button>
+        <a href="register.html" class="login-link"
+          >Don't have an account? Register</a
+        >
+      </div>
+    </form>
+    <script>
+      document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = e.target.username.value;
+        const password = e.target.password.value;
+        if (username === 'admin' && password === 'admin') {
+          alert('Login Successful');
+          window.location.href = 'dashboard.html';
+        } else {
+          alert('Login Failed');
+        }
+      });
+    </script>
+  </body>
+</html>

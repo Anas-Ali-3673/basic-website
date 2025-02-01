@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        color: #333;
+      }
+
+      /* Header */
+      header {
+        background-color: #4a90e2;
+        color: #fff;
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      /* Navigation */
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+      }
+
+      nav ul li {
+        display: inline;
+        margin: 0 1.5rem;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: #ffdd57;
+      }
+
+      /* Menu Toggle for Mobile */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      /* Main Content */
+      main {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      section {
+        margin-bottom: 3rem;
+      }
+
+      section h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+        color: #4a90e2;
+      }
+
+      /* Cards */
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        background: #fff;
+        color: #333;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .card h3 {
+        margin: 0 0 0.75rem;
+        font-size: 1.5rem;
+        color: #4a90e2;
+      }
+
+      .card p {
+        margin: 0;
+        font-size: 1rem;
+        color: #666;
+      }
+
+      .card .number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #4a90e2;
+        margin: 1rem 0;
+      }
+
+      /* Recent Activity */
+      .activity-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .activity-list li {
+        background: #fff;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+      }
+
+      .activity-list li span {
+        margin-left: auto;
+        color: #666;
+        font-size: 0.875rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 0.875rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        nav ul {
+          display: none;
+          text-align: center;
+          padding: 1rem 0;
+        }
+
+        nav ul.active {
+          display: block;
+        }
+
+        nav ul li {
+          display: block;
+          margin: 1rem 0;
+        }
+
+        main {
+          padding: 1.5rem;
+        }
+
+        section h2 {
+          font-size: 1.5rem;
+        }
+
+        .card h3 {
+          font-size: 1.25rem;
+        }
+
+        .card p {
+          font-size: 0.875rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Dashboard</h1>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <nav>
+        <ul id="menu">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#activity">Recent Activity</a></li>
+          <li><a href="#logout" id="logout">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!-- Projects Section -->
+      <section id="projects">
+        <h2>Key Metrics</h2>
+        <div class="cards-container">
+          <div class="card">
+            <h3>Projects Completed</h3>
+            <div class="number" id="projectsCompleted">0</div>
+            <p>Total projects successfully delivered.</p>
+          </div>
+          <div class="card">
+            <h3>Active Users</h3>
+            <div class="number" id="activeUsers">0</div>
+            <p>Number of users currently active.</p>
+          </div>
+          <div class="card">
+            <h3>Revenue Generated</h3>
+            <div class="number" id="revenueGenerated">$</div>
+            <p>Total revenue generated this year.</p>
+          </div>
+          <div class="card">
+            <h3>Tasks in Progress</h3>
+            <div class="number" id="tasksInProgress">0</div>
+            <p>Tasks currently being worked on.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Activity Section -->
+      <section id="activity">
+        <h2>Recent Activity</h2>
+        <ul class="activity-list">
+          <li>New project "Alpha" assigned <span>2 hours ago</span></li>
+          <li>User "ANAS ALi" logged in <span>5 hours ago</span></li>
+          <li>Task "Design UI" completed <span>1 day ago</span></li>
+          <li>Revenue report generated <span>2 days ago</span></li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 AppMinds. All rights reserved.</p>
+    </footer>
+    <script>
+      // Toggle menu for mobile
+      document.getElementById('menuToggle').addEventListener('click', () => {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+      });
+
+      // Logout functionality
+      document.getElementById('logout').addEventListener('click', () => {
+        window.location.href = 'login.html';
+      });
+
+      // Animated counters
+      const animateValue = (obj, start, end, duration) => {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          obj.textContent = Math.floor(progress * (end - start) + start);
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+        window.requestAnimationFrame(step);
+      };
+
+      animateValue(document.getElementById('projectsCompleted'), 0, 42, 2000);
+      animateValue(document.getElementById('activeUsers'), 0, 1200, 2000);
+      animateValue(
+        animateValue(
+          document.getElementById('revenueGenerated'),
+          0,
+          55000000,
+          2000
+        )
+      );
+      animateValue(document.getElementById('tasksInProgress'), 0, 15, 2000);
+    </script>
+  </body>
+</html>
